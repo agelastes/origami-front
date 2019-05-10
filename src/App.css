@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  font-weight: 500;
+  font-family: "Droid Serif";
+  font-size: 70px;
+}
+
+.App-header {
+  background-image: url("./img/header.jpg");
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  color: white;
+  opacity: 0.85;
+}
+
+.App-body {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+  padding: 20px;
+  background-color: transparent;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

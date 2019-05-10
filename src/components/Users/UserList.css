@@ -1,0 +1,10 @@
+.user-list {
+    display: flex;
+    width: 900px;
+    justify-content: space-between;
+}
+
+.user-item {
+    text-align: center;
+    width: 200px;
+}

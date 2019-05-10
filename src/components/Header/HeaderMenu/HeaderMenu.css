@@ -1,0 +1,8 @@
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    font-family: "Droid Serif";
+    background-color: #262d34;
+}

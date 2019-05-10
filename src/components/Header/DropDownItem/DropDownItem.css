@@ -1,0 +1,19 @@
+.drop-down-menu {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0.5px 0.5px 0.5px 1px snow;
+}
+
+.drop-down-menu-item {
+    margin: 20px;
+    text-decoration: none;
+    color: snow;
+    font-weight: 500;
+    font-family: "Droid Serif";
+    font-size: 25px;
+    font-style: italic;
+}
+
+.drop-down-menu-item:hover {
+    color: darkred;
+}

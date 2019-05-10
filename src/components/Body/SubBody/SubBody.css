@@ -1,0 +1,22 @@
+.sub-container {
+    border: 1px solid black;
+    width: 900px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.about-title{
+    color: snow;
+    font-family: "Droid Serif";
+    font-style: italic;
+    font-size: 40px;
+}
+
+.sub-text {
+    color: snow;
+    font-family: "Droid Serif";
+    font-style: italic;
+    font-size: 30px;
+}

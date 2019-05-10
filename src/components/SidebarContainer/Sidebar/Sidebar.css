@@ -1,0 +1,44 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 3px solid snow;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    width: 300px;
+    min-height: 350px;
+    font-size: 30px;
+    color: snow;
+}
+
+.sidebar-button {
+    background-color: Transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    background-repeat:no-repeat;
+    font-size: 20px;
+    width: 100%;
+    color: snow;
+    padding-bottom: 30px;
+    font-family: "Droid Serif";
+    font-style: italic;
+}
+
+.survey-item {
+    display: flex;
+}
+
+.sidebar-title {
+    border-bottom: 3px solid snow;
+}
+
+.sidebar-button:hover {
+    color: darkred;
+}
+
+

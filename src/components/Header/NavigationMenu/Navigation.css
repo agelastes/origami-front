@@ -1,0 +1,12 @@
+.link {
+    text-decoration: none;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: snow;
+    weight: 500;
+    font-size: 30px;
+}
+
+.link:hover {
+    color: darkred;
+}
