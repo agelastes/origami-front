@@ -6,3 +6,10 @@ export const getOrigamiList = (origamiList) => {
       payload: origamiList
   }
 };
+
+export const filterOrigamiList = (category) => {
+  return {
+      type: "ORIGAMI_FILTER",
+      category: category
+  }
+};

@@ -8,21 +8,22 @@ import OrigamiAdder from "./OrigamiAdder/OrigamiAdder";
 
 
 class MainBody extends Component {
-    constructor(props) {
-            axios.post('http://localhost:5002/api/origami/list').then(
-                (response) => {
-                    this.props.getOrigamiList(response.data);
-                }
-            ).catch( () => {
-                console.log("ssdds")
-            });
 
-        super(props);
-    };
+    // componentDidUpdate() {
+    //     axios.post('http://localhost:5002/api/origami/list').then(
+    //         (response) => {
+    //             this.props.getOrigamiList(response.data);
+    //         }
+    //     ).catch( () => {
+    //         console.log("ssdds")
+    //     });
+    //
+    // };
 
     render() {
-        const origamiList = this.props.origamiList.map((origami) => <Origami data={origami} />);
-
+        console.log(this.props.origamiList);
+        const origamiList = this.props.origamiList.filterOrigami.map((origami) => <Origami data={origami} />);
+        console.log(origamiList);
         return (
             <div className="main-body-block">
                 {origamiList}
@@ -36,8 +37,4 @@ const mapStateToProps = (state) => ({
    origamiList: state.origamiList
 });
 
-const mapDispatchToProps = {
-  getOrigamiList: getOrigamiList
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainBody);
+export default connect(mapStateToProps)(MainBody);

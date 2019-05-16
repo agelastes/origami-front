@@ -24,6 +24,13 @@ import axios from "axios";
 import { connect } from "react-redux";
 import {loginFalse, loginTrue} from "./ac/loginChange";
 import Books from "./components/Body/SubBody/Books/Books"
+import Module from "./components/Header/DropDownItem/OrigamiTypes/Module";
+import Easy from "./components/Header/DropDownItem/OrigamiTypes/Easy";
+import Razv from "./components/Header/DropDownItem/OrigamiTypes/Razv";
+import Kvilling from "./components/Header/DropDownItem/OrigamiTypes/Kvilling";
+import Watter from "./components/Header/DropDownItem/OrigamiTypes/Watter";
+import Money from "./components/Header/DropDownItem/OrigamiTypes/Money";
+import {getOrigamiList} from "./ac/getOrigamiList";
 
 
 class App extends Component {
@@ -43,15 +50,14 @@ class App extends Component {
                 localStorage.setItem('userId', response.data.id);
                 console.log(localStorage.getItem('userId'))
             });
+        axios.post('http://localhost:5002/api/origami/list').then(
+            (response) => {
+                this.props.getOrigamiList(response.data);
+            }
+        ).catch( () => {
+            console.log("ssdds")
+        });
     }
-
-    kurlikPopo = () => {
-        const token = localStorage.getItem('token');
-      axios.post('http://localhost:5002/api/survey/create', {name: "Опрос",
-          points: [{name: "Модульное оригами"}, {name: "Оригами паттерн"},
-              {name: "Простое оригами"}, {name: "Мокрое складывание"}, {name: "Оригами из денег"},
-              {name: "Квиллинг"}, {name: "Мне все нравится!"}], surveyType: 'MainPage'}, {headers: {Authorization: `${token}`}})
-    };
 
     render() {
     return (
@@ -73,6 +79,12 @@ class App extends Component {
                   <Route path = {'/profile'} component = {Profile} />
                   <Route path = {'/users'} component = {Users} />
                   <Route path = {'/books'} component = {Books} />
+                  <Route path = {'/module'} component = {Module} />
+                  <Route path = {'/easy'} component = {Easy} />
+                  <Route path = {'/razvertka'} component = {Razv} />
+                  <Route path = {'/watter'} component = {Watter} />
+                  <Route path = {'/money'} component = {Money} />
+                  <Route path = {'/kvilling'} component = {Kvilling} />
               </Switch>
           </body>
       </div>
@@ -82,7 +94,13 @@ class App extends Component {
 
 const mapDispatchToProps = {
   isLogin: loginTrue,
-  noLogin: loginFalse
+  noLogin: loginFalse,
+    getOrigamiList: getOrigamiList
 };
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = (state) => ({
+    origamiList: state.origamiList
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

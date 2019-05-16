@@ -1,36 +1,54 @@
 import React, { Component } from 'react';
 import "./Sidebar.css";
 import axios from "axios";
+import {connect} from "react-redux";
+import {filterOrigamiList} from "../../../ac/getOrigamiList";
 
 class Sidebar extends Component {
-    answerId;
+    answer = false;
     state = {
+        answerName: "",
       surveyPage: {},
-      points: []
+      points: [],
     };
+
     submitAnswer = () => {
-        console.log(this.answerId);
-        const token = localStorage.getItem('token');
-        axios.post('http://localhost:5002/api/survey/setAnswer', {surveyType: 'MainPage', pointId: this.answerId, value: true, id: localStorage.getItem('userId')},
-            {headers: { Authorization: `${token}`} })
-            .then((response) => console.log(response));
+        this.answer = true;
+        localStorage.setItem('answer', `${this.state.answerName}`);
+        console.log(localStorage.getItem('answer'));
     };
+
+    componentDidMount() {
+        const token = localStorage.getItem('token');
+        axios.post('http://localhost:5002/api/survey/getPageSurvey', {surveyType: 'MainPage'} ,{headers: {Authorization: `${token}`}})
+            .then((response) => this.setState({surveyPage: response.data.survey, points: response.data.survey.points}));
+    }
+
+    answerTrue = (point) => {
+        this.setState({answerName: point.name});
+    };
+
     render() {
         let items = this.props.item;
         if (this.props.name === "Опрос") {
-            const token = localStorage.getItem('token');
-            axios.post('http://localhost:5002/api/survey/getPageSurvey', {surveyType: 'MainPage'} ,{headers: {Authorization: `${token}`}})
-                .then((response) => this.setState({surveyPage: response.data.survey, points: response.data.survey.points}));
-            items = this.state.points.map((point) =>
-                <div className="survey-item">
-                    <input onClick={this.answerId = point.id} type="radio"/>
-                    {point.name}
-                </div>);
-            items.push(<button onClick={this.submitAnswer}>Голосовать</button>);
-        }
+            if (localStorage.getItem('answer') === undefined) {
+                items = this.state.points.map((point) =>
+                    <div className="survey-item">
+                        <div>
+                            <input onClick={() => this.answerTrue(point)} type="radio" value="point"/>
+                            <span>{point.name}</span>
+                        </div>
+                    </div>
+                );
+                items.push(<button onClick={this.submitAnswer}>Голосовать</button>);
+            }
+            else {
+                items = <span>Вы проголосовали за: {localStorage.getItem('answer')}</span>;
+            }}
+
 
         else {
-            items = items.map((item) => <button className="sidebar-button">{item}</button>);
+            items = items.map((item) => <button onClick={() => this.props.filter(item)} className="sidebar-button">{item}</button>);
         }
 
         return (
@@ -42,4 +60,8 @@ class Sidebar extends Component {
     }
 }
 
-export default Sidebar;
+const mapDispatchToProps = {
+   filter: filterOrigamiList
+};
+
+export default connect(null, mapDispatchToProps)(Sidebar);

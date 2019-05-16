@@ -8,7 +8,7 @@ class MainBody extends Component {
             <div className="sub-body-block">
                 <div className="book-container">
                     <img src="https://img1.labirint.ru/books39/384245/big.jpg"/>
-                    <div className="book-contant">
+                    <div className="book-container">
                         <h3>Набор для творчества. Модульное оригами "Розовый лотос"</h3>
                         <span>Аннотация к "Набор для творчества. Модульное оригами "Розовый лотос""
                                 Набор для творчества.

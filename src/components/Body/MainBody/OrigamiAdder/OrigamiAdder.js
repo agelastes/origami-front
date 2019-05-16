@@ -7,7 +7,8 @@ class OrigamiAdder extends Component {
 
     state = {
         title: "",
-        description: ""
+        description: "",
+        category: ""
     };
 
     createOrigami = () => {
@@ -20,7 +21,7 @@ class OrigamiAdder extends Component {
             }
         };
         axios.post('http://localhost:5002/api/origami/create',
-            {title: this.state.title, description: this.state.description, mainImage: mainImage},
+            {title: this.state.title, description: this.state.description, mainImage: mainImage, author: localStorage.getItem('login'), category: this.state.category},
             defaultOptions)
             .then((response) => console.log(response))
                 .catch(() => alert("Пожалуйста зарегистрируйтесь чтобы оставить запись"));
@@ -35,13 +36,27 @@ class OrigamiAdder extends Component {
         this.setState({description: e.target.value})
     };
 
+    onChangeCategory = (e) => {
+        this.setState({category: e.target.value});
+    };
+
     render() {
+        console.log(this.state.category);
         return (
             <div className="origami-adder-container">
                 <h1 className="origami-adder-header">Добавить оригами</h1>
                 <input onChange={this.onChangeTitle} className="origami-adder-title" placeholder="Заголовок"/>
                 <input onChange={this.onChangeDescription} className="origami-adder-description" placeholder="Описание" />
-                <ImageUpload />
+                    <select onChange= {this.onChangeCategory} className="category" id="category">
+                        <option value="Простое оригами">Простое оригами</option>
+                        <option value="Модульное оригами">Модульное оригами</option>
+                        <option value="Оригами паттерн">Оригами паттерн</option>
+                        <option value="Мокрое складывание">Мокрое оригами</option>
+                        <option value="Оригами для детей">Для детей</option>
+                        <option value="Оригами для начинающих">Для начинающих</option>
+                        <option value="Оригами для продвинутых">Для продвинутых</option>
+                    </select>
+                    <ImageUpload />
                 <button onClick={this.createOrigami}>Добавить</button>
             </div>
         );

@@ -8,7 +8,8 @@ class Origami extends Component {
       commentsVisible: false,
         commentList: [],
             title: localStorage.getItem('login'),
-            text:  ""
+            text:  "",
+        author: ""
     };
     viewComments = () => {
         console.log(this.props.data._id);
@@ -52,7 +53,7 @@ class Origami extends Component {
     };
     render() {
         const login = localStorage.getItem('login');
-        const author = localStorage.getItem('author');
+        const author = this.props.data.author;
         console.log(this.state.commentList);
         let commentList = [];
         if (this.state.commentsVisible) commentList = this.state.commentList.map((comment) => <Comment  data = {comment} />);
