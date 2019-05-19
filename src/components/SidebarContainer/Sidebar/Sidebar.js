@@ -18,7 +18,7 @@ class Sidebar extends Component {
         console.log(localStorage.getItem('answer'));
     };
 
-    componentDidMount() {
+    componentWillMount() {
         const token = localStorage.getItem('token');
         axios.post('http://localhost:5002/api/survey/getPageSurvey', {surveyType: 'MainPage'} ,{headers: {Authorization: `${token}`}})
             .then((response) => this.setState({surveyPage: response.data.survey, points: response.data.survey.points}));
