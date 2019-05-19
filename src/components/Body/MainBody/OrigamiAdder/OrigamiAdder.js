@@ -24,7 +24,7 @@ class OrigamiAdder extends Component {
             {title: this.state.title, description: this.state.description, mainImage: mainImage, author: localStorage.getItem('login'), category: this.state.category},
             defaultOptions)
             .then((response) => console.log(response))
-                .catch(() => alert("Пожалуйста зарегистрируйтесь чтобы оставить запись"));
+                .catch((response) => alert(response.message));
         localStorage.setItem('author', localStorage.getItem('login'));
     };
 

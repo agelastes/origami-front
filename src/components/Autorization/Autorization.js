@@ -25,7 +25,7 @@ class Autorization extends Component {
             (response)  => {
                 this.setState({Message: "Вы были успешно зарегистрированы"});
                 console.log(token);
-                this.props.loginTrue({login: this.state.login, token: token, password: this.state.password, role: response.data.role});
+              //  this.props.loginTrue({login: this.state.login, token: token, password: this.state.password, role: response.data.role});
                 alert(this.state.Message);
             }).catch(
             () => {
@@ -49,7 +49,7 @@ class Autorization extends Component {
 
     render() {
 
-        if (this.props.isLogin) return <div className="sub-container"><Link to = {'/profile'}>Продолжить</Link></div>;
+        if (this.props.isLogin) return <div className="sub-container"><Link to = {'/login'}>Продолжить</Link></div>;
 
         return (
             <div className="sub-container">

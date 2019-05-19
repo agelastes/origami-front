@@ -50,7 +50,7 @@ class Login extends Component {
             <div className="sub-container">
                 <h1>{this.props.login}</h1>
                 <input onChange={this.changeLogin} placeholder={this.state.login} />
-                <input onChange={this.changePassword} placeholder={this.state.password} />
+                <input type = "password" onChange={this.changePassword} placeholder={this.state.password} />
                 <button onClick={this.userDataControl}>Войти</button>
                 <Link to={'/autorisation'}>Зарегистрироваться</Link>
             </div>
