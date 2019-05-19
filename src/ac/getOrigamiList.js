@@ -13,3 +13,9 @@ export const filterOrigamiList = (category) => {
       category: category
   }
 };
+
+export const nonfilterOrigamiList = () => {
+  return {
+      type: "ORIGAMI_FILTER_FALSE"
+  }
+};

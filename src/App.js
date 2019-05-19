@@ -41,23 +41,48 @@ class App extends Component {
     };
 
     componentWillMount() {
-        const login = localStorage.getItem('login');
-        const password = localStorage.getItem('password');
-        const token = localStorage.getItem('token');
-        axios.post('http://localhost:5002/api/auth/login', {login: login, password: password})
-            .then((response) => {
-                this.loginControl(token, {login: login, password: password, token: token, role: response.data.role});
-                localStorage.setItem('userId', response.data.id);
-                console.log(localStorage.getItem('userId'))
+        if (!this.props.origamiList.filterStatus) {
+            const login = localStorage.getItem('login');
+            const password = localStorage.getItem('password');
+            const token = localStorage.getItem('token');
+            axios.post('http://localhost:5002/api/auth/login', {login: login, password: password})
+                .then((response) => {
+                    this.loginControl(token, {login: login, password: password, token: token, role: response.data.role});
+                    localStorage.setItem('userId', response.data.id);
+                    console.log(localStorage.getItem('userId'))
+                });
+            axios.post('http://localhost:5002/api/origami/list').then(
+                (response) => {
+                    this.props.getOrigamiList(response.data);
+                }
+            ).catch( () => {
+                console.log("ssdds")
             });
-        axios.post('http://localhost:5002/api/origami/list').then(
-            (response) => {
-                this.props.getOrigamiList(response.data);
-            }
-        ).catch( () => {
-            console.log("ssdds")
-        });
+        }
     }
+
+    // componentWillUpdate() {
+    //     console.log(this.props.origamiList.filterStatus);
+    //     if (!this.props.origamiList.filterStatus)
+    //     {
+    //         const login = localStorage.getItem('login');
+    //         const password = localStorage.getItem('password');
+    //         const token = localStorage.getItem('token');
+    //         axios.post('http://localhost:5002/api/auth/login', {login: login, password: password})
+    //             .then((response) => {
+    //                 this.loginControl(token, {login: login, password: password, token: token, role: response.data.role});
+    //                 localStorage.setItem('userId', response.data.id);
+    //                 console.log(localStorage.getItem('userId'))
+    //             });
+    //         axios.post('http://localhost:5002/api/origami/list').then(
+    //             (response) => {
+    //                 this.props.getOrigamiList(response.data);
+    //             }
+    //         ).catch( () => {
+    //             console.log("ssdds")
+    //         });
+    //     }
+    // }
 
     render() {
     return (

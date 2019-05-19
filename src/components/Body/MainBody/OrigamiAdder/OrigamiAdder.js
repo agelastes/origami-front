@@ -48,9 +48,10 @@ class OrigamiAdder extends Component {
                 <input onChange={this.onChangeTitle} className="origami-adder-title" placeholder="Заголовок"/>
                 <input onChange={this.onChangeDescription} className="origami-adder-description" placeholder="Описание" />
                     <select onChange= {this.onChangeCategory} className="category" id="category">
+                        <option value="Выберите категорию">Выберите категорию</option>
                         <option value="Простое оригами">Простое оригами</option>
                         <option value="Модульное оригами">Модульное оригами</option>
-                        <option value="Оригами паттерн">Оригами паттерн</option>
+                        <option value="Оригами паттерн (развертка)">Оригами паттерн</option>
                         <option value="Мокрое складывание">Мокрое оригами</option>
                         <option value="Оригами для детей">Для детей</option>
                         <option value="Оригами для начинающих">Для начинающих</option>

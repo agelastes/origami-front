@@ -18,6 +18,7 @@ export const isLoginReducer = (loginState = {status: false, path: '/autorisation
             localStorage.setItem('token', '');
             localStorage.setItem('login', '');
             localStorage.setItem('password', '');
+            localStorage.setItem('answer', '');
         }
         default: {
             return loginState;

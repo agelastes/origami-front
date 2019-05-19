@@ -9,16 +9,16 @@ import OrigamiAdder from "./OrigamiAdder/OrigamiAdder";
 
 class MainBody extends Component {
 
-    // componentDidUpdate() {
-    //     axios.post('http://localhost:5002/api/origami/list').then(
-    //         (response) => {
-    //             this.props.getOrigamiList(response.data);
-    //         }
-    //     ).catch( () => {
-    //         console.log("ssdds")
-    //     });
-    //
-    // };
+     // componentWillUpdate() {
+     //     axios.post('http://localhost:5002/api/origami/list').then(
+     //         (response) => {
+     //             this.props.getOrigamiList(response.data);
+     //         }
+     //     ).catch( () => {
+     //         console.log("ssdds")
+     //     });
+     //
+     // };
 
     render() {
         console.log(this.props.origamiList);

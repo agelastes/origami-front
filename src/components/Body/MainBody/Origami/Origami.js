@@ -52,7 +52,10 @@ class Origami extends Component {
             .catch(() => (console.log("error")))
     };
     render() {
-        const login = localStorage.getItem('login');
+        console.log(this.props.data);
+        const test = localStorage.getItem('role');
+        const role = 3;
+        console.log(test);
         const author = this.props.data.author;
         console.log(this.state.commentList);
         let commentList = [];
@@ -65,7 +68,7 @@ class Origami extends Component {
                     <span>{this.props.data.description}</span>
                     <img src={this.props.data.mainImage}/>
                     <h3>Автор:{author}</h3>
-                    {login === "denislwn" ?   <button onClick={this.origamiDelete}>Удалить</button> : null}
+                    {test === role.toString() ?   <button onClick={this.origamiDelete}>Удалить</button> : null}
                     <button onClick={this.viewComments}>Комментарии</button>
                     {commentList}
                     <div className="comment-adder">

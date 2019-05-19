@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Navigation.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {nonfilterOrigamiList} from "../../../ac/getOrigamiList";
 
 class Navigation extends Component {
 
@@ -9,7 +10,7 @@ class Navigation extends Component {
         console.log(this.props.users);
         return (
             <div className="nav-container">
-                <Link className="link" to = {'/'}>Главная</Link>
+                <Link className="link" to = {'/'}><button onClick={this.props.filterFalse}>Главная</button></Link>
                 <Link className="link" to = {'/contacts'}>Контакты</Link>
                 <Link className="link" to = {this.props.path}>{this.props.name}</Link>
                 <Link className="link" to = {'/users'}>{this.props.users}</Link>
@@ -24,4 +25,8 @@ const mapStateToProps = (state) => ({
     users: state.isLogin.users
 });
 
-export default connect(mapStateToProps)(Navigation);
+const mapDispatchToProps = {
+  filterFalse: nonfilterOrigamiList
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

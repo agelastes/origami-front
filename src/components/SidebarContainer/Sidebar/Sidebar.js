@@ -31,7 +31,7 @@ class Sidebar extends Component {
     render() {
         let items = this.props.item;
         if (this.props.name === "Опрос") {
-            if (localStorage.getItem('answer') === undefined) {
+            if (localStorage.getItem('answer') === '' || localStorage.getItem('answer') === undefined) {
                 items = this.state.points.map((point) =>
                     <div className="survey-item">
                         <div>

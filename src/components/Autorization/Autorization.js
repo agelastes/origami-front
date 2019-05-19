@@ -54,7 +54,7 @@ class Autorization extends Component {
         return (
             <div className="sub-container">
                 <input onChange={this.changeLogin} placeholder={this.state.login} />
-                <input onChange={this.changePassword} placeholder={this.state.password} />
+                <input type="password" onChange={this.changePassword} placeholder={this.state.password} />
                 <input onChange={this.changeEmail} placeholder={this.state.email} />
                 <button onClick={this.addNewUser}>Зарегистрироваться</button>
                 <Link to={'/login'}>Войти</Link>
