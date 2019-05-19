@@ -12,12 +12,17 @@
     color: snow
 }
 
+.preview-img {
+    height: 200px;
+    width: 500px;
+}
+
 .imgPreview
 {
     margin-top: 30px;
     text-align: center;
-    min-height: 200px;
-    min-width: 500px;
+    height: 200px;
+    width: 500px;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
     border-top: 5px solid gray;
