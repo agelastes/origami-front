@@ -11,6 +11,14 @@ class Origami extends Component {
             text:  "",
         author: ""
     };
+
+    componentDidUpdate()
+    {
+        axios.post('http://localhost:5002/api/origami/origamiInfo', {id: this.props.data._id, withDetail: true})
+            .then((response) => (this.setState({commentList: response.data.comments})));
+        console.log(this.state.commentList);
+    }
+
     viewComments = () => {
         console.log(this.props.data._id);
         axios.post('http://localhost:5002/api/origami/origamiInfo', {id: this.props.data._id, withDetail: true})
